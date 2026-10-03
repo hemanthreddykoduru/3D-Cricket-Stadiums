@@ -33,6 +33,7 @@ export type CameraPreset =
   | 'overview'
   | 'top'
   | 'pitch'
+  | 'stand'
   | 'north'
   | 'south'
   | 'east'

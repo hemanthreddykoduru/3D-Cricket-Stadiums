@@ -7,3 +7,8 @@ dist
 .env
 .env.local
 .DS_Store
+
+# Large 3D Models
+*.blend
+public/Full stadium.glb
+public/models/test-stadium/stadium.glb

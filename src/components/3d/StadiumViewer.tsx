@@ -1,10 +1,10 @@
 'use client';
 
-import { Suspense, useRef, useState, useEffect } from 'react';
+import { Suspense, useRef, useState, useEffect, useCallback } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { PerspectiveCamera, OrbitControls, Environment, Sky, ContactShadows } from '@react-three/drei';
+import { PerspectiveCamera, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
-import { StadiumScene } from './StadiumScene';
+import { StadiumScene, type ModelBounds } from './StadiumScene';
 import { CameraController } from './CameraController';
 import { ViewerControls } from './ViewerControls';
 import { SelectionPanel } from './SelectionPanel';
@@ -26,7 +26,7 @@ const DEFAULT_LAYERS: Record<LayerKey, boolean> = {
   roads: true,
   buildings: true,
   trees: true,
-  parking: true,
+  parking: false,
   gates: false,
   food: false,
   restrooms: false,
@@ -49,7 +49,10 @@ function StadiumViewerInner({ stadium }: { stadium: Stadium }) {
   const [azimuth, setAzimuth] = useState(0);
   const [fullscreen, setFullscreen] = useState(false);
   const [seatMode, setSeatMode] = useState(false);
+  const [cameraRequestId, setCameraRequestId] = useState(0);
+  const [modelBounds, setModelBounds] = useState<ModelBounds | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const handleBoundsChange = useCallback((bounds: ModelBounds) => setModelBounds(bounds), []);
 
   const toggleFullscreen = () => {
     if (!containerRef.current) return;
@@ -106,23 +109,23 @@ function StadiumViewerInner({ stadium }: { stadium: Stadium }) {
         }}
         dpr={[1, 2]}
         shadows
-        style={{ background: 'linear-gradient(180deg, #e9ecef 0%, #f8f9fa 100%)' }}
+         style={{ background: '#090b0f' }}
       >
         <Suspense fallback={null}>
-          <PerspectiveCamera makeDefault position={[110, 90, 110]} fov={45} near={0.5} far={800} />
+           <PerspectiveCamera makeDefault position={[250, 180, 250]} fov={45} near={0.5} far={2400} />
 
-          <CameraController preset={cameraPreset} seat={selectedSeat} seatMode={seatMode} />
+           <CameraController preset={cameraPreset} seat={selectedSeat} seatMode={seatMode} bounds={modelBounds} requestId={cameraRequestId} />
 
           {/* Cinematic Lighting Setup */}
-          <ambientLight intensity={0.2} color="#ffffff" />
-          <hemisphereLight args={['#ffffff', '#1a1a22', 0.4]} />
+           <ambientLight intensity={0.3} color="#ffffff" />
+           <hemisphereLight args={['#f4f7ff', '#252b38', 1.1]} />
           
           <directionalLight
             position={[100, 150, 50]}
-            intensity={1.5}
+             intensity={2.2}
             color="#fffcf0"
             castShadow
-            shadow-mapSize={[4096, 4096]}
+             shadow-mapSize={[2048, 2048]}
             shadow-camera-left={-250}
             shadow-camera-right={250}
             shadow-camera-top={250}
@@ -132,15 +135,7 @@ function StadiumViewerInner({ stadium }: { stadium: Stadium }) {
             shadow-bias={-0.0005}
           />
           
-          {/* Subtle rim light for pop */}
-          <directionalLight position={[-100, 50, -100]} intensity={0.5} color="#cce6ff" />
-          
-          <Sky distance={45000} sunPosition={[100, 150, 50]} inclination={0.1} azimuth={0.25} turbidity={0.5} rayleigh={0.5} mieCoefficient={0.005} mieDirectionalG={0.8} />
-          
-          <Environment preset="city" />
-
-          {/* Enhanced Fog for distance fading */}
-          <fog attach="fog" args={['#e6eff5', 300, 800]} />
+           <directionalLight position={[-120, 80, -100]} intensity={0.9} color="#b9d5ff" />
 
           <StadiumScene
             stadiumId={stadium.id}
@@ -150,20 +145,25 @@ function StadiumViewerInner({ stadium }: { stadium: Stadium }) {
             onStandSelect={handleStandSelect}
             onSeatSelect={handleSeatSelect}
             onAzimuthChange={setAzimuth}
+            onBoundsChange={handleBoundsChange}
           />
-
-          {layers.stadium && (
-            <ContactShadows resolution={1024} scale={350} blur={2} opacity={0.6} far={20} color="#1a2530" />
-          )}
 
           <OrbitControls
             makeDefault
             enableDamping
             dampingFactor={0.08}
             minDistance={20}
-            maxDistance={280}
-            maxPolarAngle={Math.PI / 2 - 0.02}
+            maxDistance={1400}
+            maxPolarAngle={Math.PI - 0.02}
+            minPolarAngle={0.02}
             enablePan
+            screenSpacePanning
+            onChange={(event) => {
+              if (!event) return;
+              const camera = event.target.object as THREE.PerspectiveCamera;
+              const direction = camera.getWorldDirection(new THREE.Vector3());
+              setAzimuth(Math.atan2(direction.x, direction.z));
+            }}
           />
         </Suspense>
       </Canvas>
@@ -188,6 +188,13 @@ function StadiumViewerInner({ stadium }: { stadium: Stadium }) {
         <div className="pointer-events-auto absolute right-4 bottom-24 md:right-6 md:top-1/2 md:-translate-y-1/2 md:bottom-auto">
           <ViewerControls
             onPreset={handlePreset}
+            onReset={() => {
+              setSelectedSeat(null);
+              setSelectedStandId(null);
+              setSeatMode(false);
+              setCameraPreset('overview');
+              setCameraRequestId((id) => id + 1);
+            }}
             current={cameraPreset}
             onFullscreen={toggleFullscreen}
             isFullscreen={fullscreen}
@@ -200,29 +207,20 @@ function StadiumViewerInner({ stadium }: { stadium: Stadium }) {
 
         <div className="pointer-events-auto absolute inset-x-0 bottom-0">
           <SelectionPanel
-            stadium={stadium}
-            selectedStandId={selectedStandId}
-            selectedSeat={selectedSeat}
             layers={layers}
             onToggleLayer={toggleLayer}
-            onSeatChange={handleSeatSelect}
-            onClearStand={() => handleStandSelect(null)}
-            onReset={() => {
-              setSelectedSeat(null);
-              setSelectedStandId(null);
-              setCameraPreset('overview');
-              setSeatMode(false);
-            }}
           />
         </div>
 
         <MobileFloatingBar
           onFullscreen={toggleFullscreen}
           isFullscreen={fullscreen}
-          onReset={() => {
+           onReset={() => {
             setSelectedSeat(null);
             setSelectedStandId(null);
-            setCameraPreset('overview');
+             setCameraPreset('overview');
+             setSeatMode(false);
+             setCameraRequestId((id) => id + 1);
           }}
         />
       </div>

@@ -6,11 +6,17 @@ export interface StadiumAsset {
 }
 
 export const STADIUM_ASSETS: Record<string, StadiumAsset> = {
+  'test-stadium': {
+    slug: 'test-stadium',
+    stadiumModel: '/models/test-stadium/stadium.glb',
+    environmentModel: '',
+    status: 'available'
+  },
   'narendra-modi-stadium': {
     slug: 'narendra-modi-stadium',
     stadiumModel: '/models/narendra-modi-stadium/stadium.glb',
-    environmentModel: '/models/narendra-modi-stadium/environment.glb',
-    status: 'pending'
+    environmentModel: '',
+    status: 'available'
   },
   'wankhede-stadium': {
     slug: 'wankhede-stadium',

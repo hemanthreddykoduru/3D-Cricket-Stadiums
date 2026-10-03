@@ -10,6 +10,7 @@ export const CAMERA_PRESETS: Record<CameraPreset, CameraTarget> = {
   overview: { position: [250, 180, 250], target: [0, 1, 0], duration: 1.2 },
   top: { position: [0, 350, 0.01], target: [0, 1, 0], duration: 1.2 },
   pitch: { position: [22, 6, 2], target: [0, 1, 0], duration: 1.2 },
+  stand: { position: [0, 40, -110], target: [0, 4, 0], duration: 1.2 },
   north: { position: [0, 40, -110], target: [0, 4, 0], duration: 1.2 },
   south: { position: [0, 40, 110], target: [0, 4, 0], duration: 1.2 },
   east: { position: [110, 40, 0], target: [0, 4, 0], duration: 1.2 },

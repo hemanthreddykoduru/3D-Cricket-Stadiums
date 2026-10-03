@@ -1,0 +1,165 @@
+{
+  "objects": [
+    {
+      "name": "Lower_Tier_Mass_01",
+      "vertices": 180,
+      "polygons": 178,
+      "triangles": 356,
+      "collections": [
+        "NMS_SEATING_BLOCKOUT"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,S2,G02,G05,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lower_Tier_Mass_02",
+      "vertices": 180,
+      "polygons": 178,
+      "triangles": 356,
+      "collections": [
+        "NMS_SEATING_BLOCKOUT"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,S2,G02,G05,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lower_Tier_Mass_03",
+      "vertices": 180,
+      "polygons": 178,
+      "triangles": 356,
+      "collections": [
+        "NMS_SEATING_BLOCKOUT"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,S2,G02,G05,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lower_Tier_Mass_04",
+      "vertices": 180,
+      "polygons": 178,
+      "triangles": 356,
+      "collections": [
+        "NMS_SEATING_BLOCKOUT"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,S2,G02,G05,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pitch_Cricket_Outfield",
+      "vertices": 193,
+      "polygons": 192,
+      "triangles": 192,
+      "collections": [
+        "NMS_PITCH"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G02,G05,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pitch_Central_Wicket_Area",
+      "vertices": 8,
+      "polygons": 6,
+      "triangles": 12,
+      "collections": [
+        "NMS_PITCH"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G02,G05,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pitch_Central_Strip",
+      "vertices": 8,
+      "polygons": 6,
+      "triangles": 12,
+      "collections": [
+        "NMS_PITCH"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G02,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pitch_Boundary_Approximate",
+      "vertices": 3072,
+      "polygons": 1920,
+      "triangles": 5376,
+      "collections": [
+        "NMS_PITCH"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pitch_Perimeter_Apron",
+      "vertices": 772,
+      "polygons": 770,
+      "triangles": 1540,
+      "collections": [
+        "NMS_PITCH"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Podium_Elevated_Deck",
+      "vertices": 772,
+      "polygons": 770,
+      "triangles": 1540,
+      "collections": [
+        "NMS_PODIUM"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Podium_Undercroft_Support_Envelope",
+      "vertices": 432,
+      "polygons": 288,
+      "triangles": 720,
+      "collections": [
+        "NMS_PODIUM"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,G03,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Podium_Approach_Ramp_Approximate",
+      "vertices": 8,
+      "polygons": 6,
+      "triangles": 12,
+      "collections": [
+        "NMS_PODIUM"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,G05,G06",
+      "zero_area_faces": 0
+    }
+  ],
+  "collections": [
+    "NMS_ENVIRONMENT_BLOCKOUT",
+    "NMS_PAVILION",
+    "NMS_PITCH",
+    "NMS_PODIUM",
+    "NMS_REFERENCE",
+    "NMS_ROOF",
+    "NMS_SEATING_BLOCKOUT",
+    "NMS_STADIUM",
+    "NMS_STRUCTURE"
+  ],
+  "total_vertices": 5985,
+  "total_polygons": 4670,
+  "total_triangles": 10828,
+  "zero_area_faces": 0,
+  "non_finite_vertices": 0,
+  "lights": 0
+}

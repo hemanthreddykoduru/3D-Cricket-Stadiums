@@ -1,8 +1,25 @@
-import React, { Suspense, useEffect, useState } from 'react';
-import { useGLTF, Html, useProgress } from '@react-three/drei';
-import { STADIUM_ASSETS } from '@/data/stadiumAssets';
-import type { SelectedSeat, LayerKey } from '@/types/stadium';
+import React, { Suspense, useLayoutEffect } from 'react';
+import { Html, useGLTF, useProgress } from '@react-three/drei';
 import * as THREE from 'three';
+import { STADIUM_ASSETS } from '@/data/stadiumAssets';
+import type { LayerKey, SelectedSeat } from '@/types/stadium';
+import { SelectionManager } from './SelectionManager';
+
+export interface ModelBounds {
+  center: [number, number, number];
+  radius: number;
+  height: number;
+  /** Bounds used for clipping, including the intentionally distant environment. */
+  full?: BoundsSummary;
+  /** Bounds of the playing surface, used by the pitch preset. */
+  pitch?: BoundsSummary;
+}
+
+export interface BoundsSummary {
+  center: [number, number, number];
+  radius: number;
+  height: number;
+}
 
 interface Props {
   stadiumId: string;
@@ -12,20 +29,19 @@ interface Props {
   onStandSelect: (id: string | null) => void;
   onSeatSelect: (seat: SelectedSeat) => void;
   onAzimuthChange?: (angle: number) => void;
+  onBoundsChange: (bounds: ModelBounds) => void;
 }
 
-export function StadiumScene({ stadiumId, layers, selectedStandId, selectedSeat, onStandSelect, onSeatSelect, onAzimuthChange }: Props) {
+export function StadiumScene({ stadiumId, layers, onBoundsChange }: Props) {
+  const asset = STADIUM_ASSETS[stadiumId];
+
   return (
     <group>
       <Suspense fallback={<Loader />}>
-        {layers.environment && <GLBEnvironment stadiumId={stadiumId} />}
-        {layers.stadium && (
-          <GLBStadium 
-            stadiumId={stadiumId} 
-            layers={layers}
-            onStandSelect={onStandSelect} 
-            onSeatSelect={onSeatSelect} 
-          />
+        {asset?.stadiumModel ? (
+          <GLBStadium url={asset.stadiumModel} layers={layers} onBoundsChange={onBoundsChange} />
+        ) : (
+          <MissingModelMessage />
         )}
       </Suspense>
     </group>
@@ -36,113 +52,125 @@ function Loader() {
   const { progress } = useProgress();
   return (
     <Html center>
-      <div className="flex flex-col items-center justify-center p-6 bg-ink-base/90 rounded-xl backdrop-blur-md shadow-2xl border border-white/10 text-white min-w-[300px]">
-        <div className="text-xl font-bold tracking-[0.2em] mb-6">STADIUM3D INDIA</div>
-        
-        <div className="w-full text-xs font-semibold uppercase tracking-[0.1em] text-ink-muted mb-2 flex justify-between">
-          <span>Loading Architecture</span>
+      <div className="flex min-w-[280px] flex-col items-center rounded-xl border border-white/10 bg-ink-base/90 p-6 text-white shadow-2xl backdrop-blur-md">
+        <div className="mb-6 text-xl font-bold tracking-[0.2em]">STADIUM3D INDIA</div>
+        <div className="mb-2 flex w-full justify-between text-xs font-semibold uppercase tracking-[0.1em] text-ink-muted">
+          <span>Loading architecture</span>
           <span>{Math.round(progress)}%</span>
         </div>
-        
-        <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
-          <div 
-            className="h-full bg-accent transition-all duration-300 ease-out"
-            style={{ width: `${progress}%` }}
-          />
+        <div className="h-1 w-full overflow-hidden rounded-full bg-white/10">
+          <div className="h-full bg-accent transition-all duration-300" style={{ width: `${progress}%` }} />
         </div>
-        
-        <div className="mt-4 text-[10px] text-ink-dim max-w-xs text-center leading-relaxed">
-          Loading professional 3D venue model...
-        </div>
+        <div className="mt-4 text-center text-[10px] leading-relaxed text-ink-dim">Loading the validated stadium model…</div>
       </div>
     </Html>
   );
 }
 
-class GLBErrorBoundary extends React.Component<{ fallback: React.ReactNode, children: React.ReactNode }, { hasError: boolean }> {
-  constructor(props: { fallback: React.ReactNode, children: React.ReactNode }) {
-    super(props);
-    this.state = { hasError: false };
-  }
+class GLBErrorBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean }> {
+  state = { hasError: false };
 
   static getDerivedStateFromError() {
     return { hasError: true };
   }
 
   render() {
-    if (this.state.hasError) {
-      return this.props.fallback;
-    }
-    return this.props.children;
+    return this.state.hasError ? <MissingModelMessage error /> : this.props.children;
   }
 }
 
-function GLBModel({ url }: { url: string }) {
+function GLBStadium({ url, layers, onBoundsChange }: { url: string; layers: Record<LayerKey, boolean>; onBoundsChange: (bounds: ModelBounds) => void }) {
+  return (
+    <GLBErrorBoundary>
+      <StadiumModel url={url} layers={layers} onBoundsChange={onBoundsChange} />
+    </GLBErrorBoundary>
+  );
+}
+
+export function StadiumModel({ url, layers, onBoundsChange }: { url: string; layers: Record<LayerKey, boolean>; onBoundsChange: (bounds: ModelBounds) => void }) {
   const { scene } = useGLTF(url);
-  
-  useEffect(() => {
-    if (!scene) return;
+
+  useLayoutEffect(() => {
+    // The GLB contains a large site/environment layer. It is useful for
+    // rendering, but must not determine the camera's architecture fit.
+    const full = getNamedBounds(scene, () => true);
+    const architecture = getNamedBounds(scene, (name) => !isEnvironmentName(name));
+    const pitch = getNamedBounds(scene, isPitchName);
+    const summary = toSummary(architecture);
+    const fullSummary = toSummary(full);
+    const pitchSummary = pitch ? toSummary(pitch) : undefined;
+    onBoundsChange({
+      ...summary,
+      full: fullSummary,
+      pitch: pitchSummary,
+    });
+  }, [scene, onBoundsChange]);
+
+  useLayoutEffect(() => {
     scene.traverse((child) => {
-      if (child instanceof THREE.Mesh) {
-        child.castShadow = true;
-        child.receiveShadow = true;
-        if (child.material) {
-          child.material.envMapIntensity = 1.0;
-          child.material.needsUpdate = true;
+      if (!(child instanceof THREE.Mesh)) return;
+      child.castShadow = true;
+      child.receiveShadow = true;
+      child.frustumCulled = true;
+      const materials = Array.isArray(child.material) ? child.material : [child.material];
+      materials.forEach((material) => {
+        if (material instanceof THREE.MeshStandardMaterial || material instanceof THREE.MeshPhysicalMaterial) {
+          material.envMapIntensity = 0.85;
+          material.needsUpdate = true;
         }
-      }
+      });
     });
   }, [scene]);
 
-  return <primitive object={scene} />;
-}
-
-
-
-function GLBStadium({ stadiumId, layers, onStandSelect, onSeatSelect }: any) {
-  const asset = STADIUM_ASSETS[stadiumId];
-  if (!asset || asset.status === 'pending') {
-    return <MissingModelMessage type="Stadium" />;
-  }
-
-  const modelUrl = asset.stadiumModel;
   return (
-    <GLBErrorBoundary fallback={<MissingModelMessage type="Stadium" />}>
-      <GLBModel url={modelUrl} />
-    </GLBErrorBoundary>
+    <>
+      <SelectionManager root={scene} layers={layers} />
+      <primitive object={scene} dispose={null} />
+    </>
   );
 }
 
-function GLBEnvironment({ stadiumId }: { stadiumId: string }) {
-  const asset = STADIUM_ASSETS[stadiumId];
-  if (!asset || asset.status === 'pending') {
-    return <MissingModelMessage type="Environment" />;
-  }
-
-  const modelUrl = asset.environmentModel;
-  return (
-    <GLBErrorBoundary fallback={<MissingModelMessage type="Environment" />}>
-      <GLBModel url={modelUrl} />
-    </GLBErrorBoundary>
-  );
+function isEnvironmentName(name: string) {
+  return /^(Step21_Environment|Web_Environment|Web_Near_Roads|Near_|Environment)/i.test(name);
 }
 
-function MissingModelMessage({ type }: { type: string }) {
-  const yOffset = type === 'Stadium' ? 'translateY(-60%)' : 'translateY(60%)';
-  
+function isPitchName(name: string) {
+  return /^(Pitch_|Step20_Pitch_)/i.test(name);
+}
+
+function getNamedBounds(root: THREE.Object3D, include: (name: string) => boolean) {
+  const bounds = new THREE.Box3();
+  let found = false;
+  root.traverse((object) => {
+    if (!(object instanceof THREE.Mesh) || !include(object.name)) return;
+    bounds.expandByObject(object);
+    found = true;
+  });
+  return found ? bounds : null;
+}
+
+function toSummary(bounds: THREE.Box3 | null): BoundsSummary {
+  const safeBounds = bounds ?? new THREE.Box3(new THREE.Vector3(-1, 0, -1), new THREE.Vector3(1, 2, 1));
+  const size = safeBounds.getSize(new THREE.Vector3());
+  const center = safeBounds.getCenter(new THREE.Vector3());
+  return {
+    center: [center.x, center.y, center.z],
+    radius: Math.max(size.x, size.z) * 0.5,
+    height: size.y,
+  };
+}
+
+function MissingModelMessage({ error = false }: { error?: boolean }) {
   return (
-    <Html center zIndexRange={[100, 0]}>
-      <div 
-        className="flex flex-col items-center justify-center p-8 bg-ink-base/90 rounded-2xl border border-white/10 text-ink-main min-w-[450px] shadow-2xl backdrop-blur-xl"
-        style={{ transform: yOffset }}
-      >
-        <div className="text-xl font-bold tracking-[0.15em] mb-4 text-center">
-          3D MODEL COMING SOON
-        </div>
-        <div className="text-sm text-ink-muted text-center max-w-sm leading-relaxed">
-          The interactive 3D reconstruction for this {type.toLowerCase()} will be available once the model asset is added.
+    <Html center>
+      <div className="flex min-w-[280px] flex-col items-center rounded-xl border border-white/10 bg-ink-base/90 p-8 text-center text-white shadow-2xl backdrop-blur-xl">
+        <div className="text-xl font-bold tracking-[0.15em]">3D MODEL UNAVAILABLE</div>
+        <div className="mt-3 max-w-sm text-sm leading-relaxed text-ink-muted">
+          {error ? 'The stadium GLB could not be loaded.' : 'No stadium model is configured for this venue.'}
         </div>
       </div>
     </Html>
   );
 }
+
+useGLTF.preload('/models/narendra-modi-stadium/stadium.glb');

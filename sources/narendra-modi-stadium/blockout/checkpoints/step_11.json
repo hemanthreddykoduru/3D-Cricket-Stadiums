@@ -1,0 +1,2268 @@
+{
+  "objects": [
+    {
+      "name": "Bowl_Intertier_Concourse_1",
+      "vertices": 260,
+      "polygons": 258,
+      "triangles": 516,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G02,G06,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Bowl_Upper_Rear_Walkway_1",
+      "vertices": 260,
+      "polygons": 258,
+      "triangles": 516,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Bowl_Intertier_Concourse_2",
+      "vertices": 272,
+      "polygons": 270,
+      "triangles": 540,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G02,G06,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Bowl_Upper_Rear_Walkway_2",
+      "vertices": 272,
+      "polygons": 270,
+      "triangles": 540,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Bowl_Intertier_Concourse_3",
+      "vertices": 144,
+      "polygons": 142,
+      "triangles": 284,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G02,G06,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Bowl_Upper_Rear_Walkway_3",
+      "vertices": 144,
+      "polygons": 142,
+      "triangles": 284,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_00",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_01",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_02",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_03",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_04",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_05",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_06",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_07",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_08",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_09",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_10",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_11",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_12",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_13",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_14",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_15",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_16",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_17",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_18",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_19",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_20",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_21",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_22",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_23",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_24",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_25",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_26",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_27",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_28",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_29",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_30",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_31",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_32",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_39",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_40",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_41",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_42",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_43",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_44",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_45",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_46",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Concrete_Raker_StudyBay_47",
+      "vertices": 24,
+      "polygons": 18,
+      "triangles": 36,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "End_Opening_Mass_Front",
+      "vertices": 8,
+      "polygons": 6,
+      "triangles": 12,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G02,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "End_Recess_Front",
+      "vertices": 8,
+      "polygons": 6,
+      "triangles": 12,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G02,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "End_Opening_Mass_Rear",
+      "vertices": 8,
+      "polygons": 6,
+      "triangles": 12,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G02,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "End_Recess_Rear",
+      "vertices": 8,
+      "polygons": 6,
+      "triangles": 12,
+      "collections": [
+        "NMS_STRUCTURE"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G02,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lower_Tier_Mass_01",
+      "vertices": 180,
+      "polygons": 178,
+      "triangles": 356,
+      "collections": [
+        "NMS_SEATING_BLOCKOUT"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,S2,G02,G05,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lower_Tier_Mass_02",
+      "vertices": 180,
+      "polygons": 178,
+      "triangles": 356,
+      "collections": [
+        "NMS_SEATING_BLOCKOUT"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,S2,G02,G05,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lower_Tier_Mass_03",
+      "vertices": 180,
+      "polygons": 178,
+      "triangles": 356,
+      "collections": [
+        "NMS_SEATING_BLOCKOUT"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,S2,G02,G05,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Lower_Tier_Mass_04",
+      "vertices": 180,
+      "polygons": 178,
+      "triangles": 356,
+      "collections": [
+        "NMS_SEATING_BLOCKOUT"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,S2,G02,G05,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Tier_Mass_01",
+      "vertices": 180,
+      "polygons": 178,
+      "triangles": 356,
+      "collections": [
+        "NMS_SEATING_BLOCKOUT"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,S2,G02,G06,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Tier_Mass_02",
+      "vertices": 180,
+      "polygons": 178,
+      "triangles": 356,
+      "collections": [
+        "NMS_SEATING_BLOCKOUT"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,S2,G02,G06,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Tier_Mass_03",
+      "vertices": 176,
+      "polygons": 174,
+      "triangles": 348,
+      "collections": [
+        "NMS_SEATING_BLOCKOUT"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,S2,G02,G06,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Upper_Tier_Mass_04",
+      "vertices": 144,
+      "polygons": 142,
+      "triangles": 284,
+      "collections": [
+        "NMS_SEATING_BLOCKOUT"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,S2,G02,G06,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Perimeter_Lower_Chord",
+      "vertices": 3072,
+      "polygons": 1920,
+      "triangles": 5376,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Perimeter_Upper_Chord",
+      "vertices": 3072,
+      "polygons": 1920,
+      "triangles": 5376,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Perimeter_Planar_Triangulation",
+      "vertices": 1536,
+      "polygons": 960,
+      "triangles": 2688,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_00",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_01",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_02",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_03",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_04",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_05",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_06",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_07",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_08",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_09",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_10",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_11",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_12",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_13",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_14",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_15",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_16",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_17",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_18",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_19",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_20",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_21",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_22",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_23",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_24",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_25",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_26",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_27",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_28",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_29",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_30",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_31",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_32",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_33",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_34",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_35",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_36",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_37",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_38",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_39",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_40",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_41",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_42",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_43",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_44",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_45",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_46",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Membrane_StudyBay_47",
+      "vertices": 42,
+      "polygons": 30,
+      "triangles": 60,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Inner_Edge",
+      "vertices": 3072,
+      "polygons": 1920,
+      "triangles": 5376,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_00",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_01",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_02",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_03",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_04",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_05",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_06",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_07",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_08",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_09",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_10",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_11",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_12",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_13",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_14",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_15",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_16",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_17",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_18",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_19",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_20",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_21",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_22",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_23",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_24",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_25",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_26",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_27",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_28",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_29",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_30",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_31",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_32",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_39",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_40",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_41",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_42",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_43",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_44",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_45",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_46",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Roof_Diagonal_V_StudyBay_47",
+      "vertices": 32,
+      "polygons": 20,
+      "triangles": 56,
+      "collections": [
+        "NMS_ROOF"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "NMS_Pavilion_Shell",
+      "vertices": 260,
+      "polygons": 258,
+      "triangles": 516,
+      "collections": [
+        "NMS_PAVILION"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G05,G06,G08",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "NMS_Pavilion_Interior_Fascia_01",
+      "vertices": 260,
+      "polygons": 258,
+      "triangles": 516,
+      "collections": [
+        "NMS_PAVILION"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G09",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "NMS_Pavilion_Interior_Fascia_02",
+      "vertices": 260,
+      "polygons": 258,
+      "triangles": 516,
+      "collections": [
+        "NMS_PAVILION"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G09",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "NMS_Pavilion_Interior_Fascia_03",
+      "vertices": 260,
+      "polygons": 258,
+      "triangles": 516,
+      "collections": [
+        "NMS_PAVILION"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G09",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "NMS_Pavilion_Interior_Fascia_04",
+      "vertices": 260,
+      "polygons": 258,
+      "triangles": 516,
+      "collections": [
+        "NMS_PAVILION"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G09",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "NMS_Pavilion_Interior_Recess_01",
+      "vertices": 260,
+      "polygons": 258,
+      "triangles": 516,
+      "collections": [
+        "NMS_PAVILION"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G09",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "NMS_Pavilion_Interior_Recess_02",
+      "vertices": 260,
+      "polygons": 258,
+      "triangles": 516,
+      "collections": [
+        "NMS_PAVILION"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G09",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "NMS_Pavilion_Interior_Recess_03",
+      "vertices": 260,
+      "polygons": 258,
+      "triangles": 516,
+      "collections": [
+        "NMS_PAVILION"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G06,G09",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "NMS_Pavilion_Exterior_Lower_Recess",
+      "vertices": 260,
+      "polygons": 258,
+      "triangles": 516,
+      "collections": [
+        "NMS_PAVILION"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G08",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "NMS_Pavilion_Gold_Screen_Layer_01",
+      "vertices": 780,
+      "polygons": 770,
+      "triangles": 1556,
+      "collections": [
+        "NMS_PAVILION"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G08,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "NMS_Pavilion_Gold_Screen_Layer_02",
+      "vertices": 780,
+      "polygons": 770,
+      "triangles": 1556,
+      "collections": [
+        "NMS_PAVILION"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G08,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "NMS_Pavilion_Gold_Screen_Layer_03",
+      "vertices": 780,
+      "polygons": 770,
+      "triangles": 1556,
+      "collections": [
+        "NMS_PAVILION"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G08,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "NMS_Pavilion_Gold_Screen_Layer_04",
+      "vertices": 780,
+      "polygons": 770,
+      "triangles": 1556,
+      "collections": [
+        "NMS_PAVILION"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G08,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pavilion_Base_Mass",
+      "vertices": 112,
+      "polygons": 110,
+      "triangles": 220,
+      "collections": [
+        "NMS_PAVILION"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G08",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pavilion_Base_Recess",
+      "vertices": 84,
+      "polygons": 82,
+      "triangles": 164,
+      "collections": [
+        "NMS_PAVILION"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G08",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pitch_Cricket_Outfield",
+      "vertices": 193,
+      "polygons": 192,
+      "triangles": 192,
+      "collections": [
+        "NMS_PITCH"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G02,G05,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pitch_Central_Wicket_Area",
+      "vertices": 8,
+      "polygons": 6,
+      "triangles": 12,
+      "collections": [
+        "NMS_PITCH"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G02,G05,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pitch_Central_Strip",
+      "vertices": 8,
+      "polygons": 6,
+      "triangles": 12,
+      "collections": [
+        "NMS_PITCH"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G02,G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pitch_Boundary_Approximate",
+      "vertices": 3072,
+      "polygons": 1920,
+      "triangles": 5376,
+      "collections": [
+        "NMS_PITCH"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S5,G03,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Pitch_Perimeter_Apron",
+      "vertices": 772,
+      "polygons": 770,
+      "triangles": 1540,
+      "collections": [
+        "NMS_PITCH"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G07",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Podium_Elevated_Deck",
+      "vertices": 772,
+      "polygons": 770,
+      "triangles": 1540,
+      "collections": [
+        "NMS_PODIUM"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,G03,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Podium_Undercroft_Support_Envelope",
+      "vertices": 432,
+      "polygons": 288,
+      "triangles": 720,
+      "collections": [
+        "NMS_PODIUM"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,G03,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "Podium_Approach_Ramp_Approximate",
+      "vertices": 8,
+      "polygons": 6,
+      "triangles": 12,
+      "collections": [
+        "NMS_PODIUM"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "S1,G05,G06",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "ENV_Ground_Pad",
+      "vertices": 8,
+      "polygons": 1,
+      "triangles": 6,
+      "collections": [
+        "NEAR"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G05,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "ENV_Practice_Open_Ground_Rear",
+      "vertices": 64,
+      "polygons": 34,
+      "triangles": 124,
+      "collections": [
+        "NEAR"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G05,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "ENV_Practice_Open_Ground_Front",
+      "vertices": 64,
+      "polygons": 34,
+      "triangles": 124,
+      "collections": [
+        "NEAR"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G05,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "ENV_Pavilion_Forecourt_Access",
+      "vertices": 22,
+      "polygons": 10,
+      "triangles": 20,
+      "collections": [
+        "NEAR"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G05,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "ENV_Practice_Side_Access",
+      "vertices": 16,
+      "polygons": 7,
+      "triangles": 14,
+      "collections": [
+        "NEAR"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G05,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "ENV_Left_Site_Access",
+      "vertices": 14,
+      "polygons": 6,
+      "triangles": 12,
+      "collections": [
+        "NEAR"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G05,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "ENV_Urban_Envelope_Left",
+      "vertices": 14,
+      "polygons": 9,
+      "triangles": 24,
+      "collections": [
+        "MID"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G05,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "ENV_Urban_Envelope_Rear",
+      "vertices": 16,
+      "polygons": 10,
+      "triangles": 28,
+      "collections": [
+        "MID"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G05,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "ENV_Elevated_Transport_Envelope",
+      "vertices": 8,
+      "polygons": 6,
+      "triangles": 12,
+      "collections": [
+        "MID"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G05,G06,G10",
+      "zero_area_faces": 0
+    },
+    {
+      "name": "ENV_Urban_Envelope_Distant_Rear",
+      "vertices": 16,
+      "polygons": 10,
+      "triangles": 28,
+      "collections": [
+        "FAR"
+      ],
+      "evidence": "VISUALLY INFERRED",
+      "references": "G03,G05,G06,G10",
+      "zero_area_faces": 0
+    }
+  ],
+  "collections": [
+    "FAR",
+    "MID",
+    "NEAR",
+    "NMS_ENVIRONMENT_BLOCKOUT",
+    "NMS_PAVILION",
+    "NMS_PITCH",
+    "NMS_PODIUM",
+    "NMS_REFERENCE",
+    "NMS_ROOF",
+    "NMS_SEATING_BLOCKOUT",
+    "NMS_STADIUM",
+    "NMS_STRUCTURE"
+  ],
+  "total_vertices": 29067,
+  "total_polygons": 22183,
+  "total_triangles": 52104,
+  "zero_area_faces": 0,
+  "non_finite_vertices": 0,
+  "lights": 0
+}
