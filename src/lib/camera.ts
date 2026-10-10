@@ -1,9 +1,20 @@
-import type { CameraPreset } from '@/types/stadium';
+import type { CameraPreset, SelectedSeat } from '@/types/stadium';
 
 export interface CameraTarget {
   position: [number, number, number];
   target: [number, number, number];
   duration?: number;
+  fov?: number;
+}
+
+/** Camera data comes from the mapped instance, never inferred from its label. */
+export function getSeatCameraTarget(seat: SelectedSeat | null): CameraTarget | null {
+  if (!seat || ![seat.position, seat.eyePosition, seat.target].every((point) =>
+    Array.isArray(point) && point.length === 3 && point.every(Number.isFinite),
+  )) return null;
+  if (Math.hypot(...seat.eyePosition.map((value, index) => value - seat.target[index])) < 0.1) return null;
+  // Cut directly to the seat rather than flying through roof/stand geometry.
+  return { position: [...seat.eyePosition], target: [...seat.target], duration: 0, fov: 65 };
 }
 
 export const CAMERA_PRESETS: Record<CameraPreset, CameraTarget> = {

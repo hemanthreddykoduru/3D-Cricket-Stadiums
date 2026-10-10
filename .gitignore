@@ -1,5 +1,6 @@
 node_modules
 .next
+.next-dev
 out
 build
 dist
@@ -12,3 +13,18 @@ dist
 *.blend
 public/Full stadium.glb
 public/models/test-stadium/stadium.glb
+
+# More Large 3D Models
+made/
+sources/
+*.fbx
+
+
+# All large files
+*.blend
+*.glb
+*.fbx
+!public/models/**/environment.glb
+!public/models/**/stadium.glb
+!public/models/narendra-modi-stadium/step34-c-motera.glb
+

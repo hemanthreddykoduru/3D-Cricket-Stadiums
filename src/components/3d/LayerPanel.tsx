@@ -1,61 +1,58 @@
 'use client';
 
-import { Layers, Box, Armchair, DoorClosed, UtensilsCrossed, Bath, Car, Accessibility } from 'lucide-react';
+import { Armchair, Box } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import type { LayerKey } from '@/types/stadium';
 
 interface Props {
   layers: Record<LayerKey, boolean>;
-  onToggle: (k: LayerKey) => void;
+  onToggle: (key: LayerKey) => void;
 }
 
-const LAYERS: Array<{ key: LayerKey; label: string; icon: any; supported?: boolean }> = [
-  { key: 'stadium', label: 'Stadium', icon: Box },
-   { key: 'stands', label: 'Stands', icon: Layers, supported: false },
-   { key: 'seats', label: 'Seats', icon: Armchair, supported: false },
-  { key: 'environment', label: 'Environment', icon: Box },
-  { key: 'roads', label: 'Roads', icon: Box },
-   { key: 'buildings', label: 'Buildings', icon: Box, supported: false },
-   { key: 'trees', label: 'Trees', icon: Box, supported: false },
-  { key: 'parking', label: 'Parking', icon: Car },
-   { key: 'gates', label: 'Gates', icon: DoorClosed, supported: false },
-   { key: 'food', label: 'Food & Beverage', icon: UtensilsCrossed, supported: false },
-   { key: 'restrooms', label: 'Restrooms', icon: Bath, supported: false },
-   { key: 'accessibility', label: 'Accessibility', icon: Accessibility, supported: false },
+const SUPPORTED_LAYERS: Array<{ key: LayerKey; label: string; icon: LucideIcon }> = [
+  { key: 'stadium', label: 'Entire stadium', icon: Box },
+  { key: 'seats', label: 'Seating', icon: Armchair },
 ];
 
 export function LayerPanel({ layers, onToggle }: Props) {
   return (
-    <div className="glass flex max-h-[min(70vh,520px)] flex-col gap-1 overflow-y-auto rounded-md p-1.5 md:w-48">
+    <div className="glass flex w-full min-w-0 max-w-full shrink-0 flex-col gap-1 overflow-x-hidden rounded-lg p-1.5" role="group" aria-label="Model layers">
       <div className="px-2.5 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink-muted">
-        Layers
+        Model layers
       </div>
-      {LAYERS.map((l) => {
-        const Icon = l.icon;
-        const active = layers[l.key];
-        const disabled = l.supported === false;
+      {SUPPORTED_LAYERS.map((layer) => {
+        const Icon = layer.icon;
+        const active = layers[layer.key];
         return (
           <button
-            key={l.key}
-            onClick={() => onToggle(l.key)}
-            disabled={disabled}
-            aria-label={disabled ? `${l.label}: unavailable for this model` : `Toggle ${l.label}`}
-            title={disabled ? 'Unavailable for this model' : `Toggle ${l.label}`}
-            className={`focus-ring flex items-center gap-2.5 rounded px-2.5 py-1.5 text-[12px] transition-colors ${
-              disabled ? 'cursor-not-allowed text-ink-dim/50' : active ? 'text-ink-main' : 'text-ink-dim hover:text-ink-muted'
+            key={layer.key}
+            type="button"
+            onClick={() => onToggle(layer.key)}
+            aria-label={`Toggle ${layer.label}`}
+            aria-pressed={active}
+            title={`Toggle ${layer.label}`}
+            className={`focus-ring flex min-h-11 min-w-0 items-center gap-2.5 rounded px-2.5 py-2 text-[12px] transition-colors ${
+              active ? 'bg-surface-900 text-ink-main' : 'text-ink-muted hover:bg-surface-900 hover:text-ink-main'
             }`}
           >
-            <div
-              className={`flex h-4 w-4 items-center justify-center rounded-sm border ${
-                active ? 'border-accent bg-accent/15' : 'border-white/15'
+            <span
+              className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border ${
+                active ? 'border-accent bg-surface-950' : 'border-line-strong bg-surface-950'
               }`}
+              aria-hidden="true"
             >
-              {active && <div className="h-2 w-2 rounded-[2px] bg-accent" />}
-            </div>
-            <Icon className="h-3.5 w-3.5" />
-            <span className="flex-1 text-left">{l.label}</span>
+              {active && <span className="h-2 w-2 rounded-[2px] bg-accent" />}
+            </span>
+            <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+            <span className="min-w-0 flex-1 break-words text-left [overflow-wrap:anywhere]">{layer.label}</span>
           </button>
         );
       })}
+      <p className="border-t border-line px-2.5 pb-2 pt-3 text-[10px] leading-relaxed text-ink-muted">
+        {layers.stadium
+          ? 'Stadium includes the playing field.'
+          : 'Turn on Entire stadium to see the selected layers.'}
+      </p>
     </div>
   );
 }

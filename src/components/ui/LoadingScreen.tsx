@@ -1,39 +1,69 @@
 'use client';
 
-import { Compass } from 'lucide-react';
+import { StadiumLoadingArt } from './StadiumLoadingArt';
+import styles from './LoadingScreen.module.css';
 
 interface Props {
   label?: string;
-  progress?: number; // 0-100
+  progress?: number;
+  phase?: 'opening' | 'loading' | 'preparing';
 }
 
-export function LoadingScreen({ label = 'Loading stadium', progress }: Props) {
+const statusText = {
+  opening: 'Opening the stadium viewer',
+  loading: 'Loading stadium resources',
+  preparing: 'Preparing your view',
+};
+
+const phaseDetail = {
+  opening: 'Starting the 3D viewer for this stadium.',
+  loading: 'Downloading the stadium model and textures.',
+  preparing: 'Setting up the scene and your first viewpoint.',
+};
+
+export function LoadingScreen({
+  label = 'Stadium3D India',
+  progress,
+  phase = 'loading',
+}: Props) {
+  const value = phase === 'loading' && typeof progress === 'number' && Number.isFinite(progress)
+    ? Math.min(100, Math.max(0, progress))
+    : undefined;
+
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center bg-surface-950">
-      <div className="flex flex-col items-center gap-6">
-        <div className="flex items-center gap-3">
-          <Compass className="h-6 w-6 text-accent" strokeWidth={2.2} />
-          <span className="font-display text-[13px] font-bold uppercase tracking-[0.22em] text-ink-main">
-            Stadium3D India
-          </span>
+    <div className={`h-full w-full ${styles.screen}`}>
+      <div className={styles.content}>
+        <div className={styles.illustration}>
+          <StadiumLoadingArt phase={phase} />
         </div>
 
-        <div className="flex flex-col items-center gap-3">
-          <div className="text-[11px] uppercase tracking-[0.22em] text-ink-muted">
-            {label}
-          </div>
-          <div className="h-[2px] w-56 overflow-hidden rounded-full bg-surface-700">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-accent-dim via-accent to-accent-hover transition-[width] duration-300"
-              style={{ width: `${progress ?? 40}%` }}
+        <div className={styles.copy}>
+          <h2 className={`font-display ${styles.title}`}>{label}</h2>
+          <p className={styles.status} role="status" aria-live="polite" aria-atomic="true">
+            {statusText[phase]}
+          </p>
+          <p className={styles.detail}>{phaseDetail[phase]}</p>
+        </div>
+
+        <div
+          className={styles.progress}
+          role="progressbar"
+          aria-label={`${label} viewer progress`}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={value}
+        >
+          <span className={styles.track} aria-hidden="true">
+            <span
+              className={value === undefined ? styles.indeterminate : styles.fill}
+              style={value === undefined ? undefined : { width: `${value}%` }}
             />
-          </div>
-          {typeof progress === 'number' && (
-            <div className="font-mono text-[10px] tracking-widest text-ink-dim">
-              {Math.round(progress)}%
-            </div>
+          </span>
+          {value !== undefined && (
+            <span className={styles.percentage} aria-hidden="true">{Math.round(value)}%</span>
           )}
         </div>
+
       </div>
     </div>
   );

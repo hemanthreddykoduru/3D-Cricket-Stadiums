@@ -1,42 +1,63 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, MapPin, Box } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Clock3, MapPin } from 'lucide-react';
 import type { Stadium } from '@/types/stadium';
 
-export function StadiumCard({ stadium, index }: { stadium: Stadium; index?: number }) {
+export function StadiumCard({ stadium }: { stadium: Stadium; index?: number }) {
+  const isAvailable = stadium.modelStatus === 'available';
+  const isNarendraModi = stadium.slug === 'narendra-modi-stadium';
+  const actionLabel = isAvailable ? 'Explore in 3D' : 'View venue';
+
   return (
     <Link
       href={`/stadiums/${stadium.slug}`}
-      className="group relative flex flex-col overflow-hidden rounded-md border border-white/5 bg-surface-900 transition-all duration-300 hover:border-white/15 hover:bg-surface-800"
-      style={{ animationDelay: index ? `${index * 60}ms` : '0ms' }}
+      aria-label={`${actionLabel}: ${stadium.name}`}
+      className="focus-ring group relative flex h-full min-w-0 flex-col overflow-hidden rounded-lg border border-line bg-surface-950 shadow-[0_6px_24px_rgba(36,95,158,0.05)] transition-colors hover:border-accent"
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-surface-800 via-surface-900 to-surface-950">
-        <StadiumVisual slug={stadium.slug} />
-        <div className="absolute inset-0 bg-gradient-to-t from-surface-950 via-surface-950/30 to-transparent" />
-        <div className="absolute right-3 top-3">
-          <span className="inline-flex items-center gap-1.5 rounded-sm border border-white/10 bg-surface-950/70 px-2 py-1 text-[9px] uppercase tracking-wider text-ink-muted backdrop-blur">
-            <Box className="h-2.5 w-2.5" />
-            {stadium.modelStatus === 'available' ? '3D Model' : '3D Coming Soon'}
+      <div className="relative aspect-[16/9] overflow-hidden bg-surface-950">
+        {isNarendraModi ? (
+          <Image
+            src="/narendra-modi-stadium.jpg"
+            alt="Aerial view of Narendra Modi Stadium in Ahmedabad"
+            fill
+            sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw"
+            className="object-cover object-center"
+          />
+        ) : (
+          <StadiumVisual slug={stadium.slug} />
+        )}
+        {!isNarendraModi && <div className="absolute bottom-2.5 left-4">
+          <span className="text-[11px] text-ink-dim">
+            Illustrative view
           </span>
-        </div>
+        </div>}
       </div>
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="font-display text-[17px] font-semibold leading-tight text-ink-main">
+
+      <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-5">
+        <div className={`mb-2.5 flex items-center gap-1.5 text-[12px] font-medium ${isAvailable ? 'text-accent' : 'text-ink-muted'}`}>
+          {isAvailable ? <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" /> : <Clock3 className="h-3.5 w-3.5" aria-hidden="true" />}
+          {isAvailable ? '3D ready' : 'Venue profile'}
+        </div>
+        <h3 className="break-words font-display text-[20px] font-semibold leading-tight tracking-tight text-ink-main">
           {stadium.name}
         </h3>
-        <div className="mt-1.5 flex items-center gap-1.5 text-[12px] text-ink-muted">
-          <MapPin className="h-3 w-3" />
-          {stadium.city}, {stadium.state}
+        <div className="mt-2 flex items-center gap-1.5 text-[13px] text-ink-muted">
+          <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+          <span className="min-w-0 break-words">{stadium.city}, {stadium.state}</span>
         </div>
-        {stadium.capacity && (
-          <div className="mt-1 text-[11px] text-ink-dim">
-            Capacity: {stadium.capacity.toLocaleString('en-IN')}
-          </div>
-        )}
-        <div className="mt-auto flex items-center justify-between pt-5">
-          <span className="text-[11px] uppercase tracking-[0.18em] text-ink-dim">Explore</span>
-          <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 text-ink-muted transition-all group-hover:border-accent group-hover:bg-accent group-hover:text-surface-950">
-            <ArrowRight className="h-3.5 w-3.5" />
-          </div>
+
+        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 border-t border-line pt-3 text-[13px] text-ink-dim">
+          {stadium.capacity !== undefined && (
+            <span>{stadium.capacity.toLocaleString('en-IN')} capacity</span>
+          )}
+          {stadium.opened !== undefined && <span>Opened {stadium.opened}</span>}
+        </div>
+
+        <div className="mt-auto flex min-h-11 items-center justify-between gap-3 pt-5 text-accent group-hover:text-accent-hover">
+          <span className="text-[14px] font-semibold">
+            {actionLabel}
+          </span>
+          <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
         </div>
       </div>
     </Link>
@@ -45,35 +66,35 @@ export function StadiumCard({ stadium, index }: { stadium: Stadium; index?: numb
 
 function StadiumVisual({ slug }: { slug: string }) {
   const palettes: Record<string, [string, string]> = {
-    'wankhede-stadium': ['#3a506b', '#5b7fa5'],
-    'eden-gardens': ['#2d3a2d', '#506a4a'],
-    'm-chinnaswamy-stadium': ['#3a3150', '#6a5085'],
-    'narendra-modi-stadium': ['#4a3a2d', '#8a6b4a'],
-    'ma-chidambaram-stadium': ['#3a2d2d', '#6a4a4a'],
-    'arun-jaitley-stadium': ['#2d3a3a', '#4a6a6a'],
-    'ekana-stadium': ['#3a3a2d', '#6a6a4a'],
-    'rajiv-gandhi-stadium': ['#2d2d3a', '#4a4a6a'],
-    'maharashtra-cricket-association-stadium': ['#3a2d3a', '#6a4a6a'],
-    'sawai-mansingh-stadium': ['#4a3a3a', '#8a6a6a'],
+    'wankhede-stadium': ['#edf2f6', '#527c9e'],
+    'eden-gardens': ['#eef3f2', '#5a7f83'],
+    'm-chinnaswamy-stadium': ['#eff1f7', '#6c7da0'],
+    'ma-chidambaram-stadium': ['#f1f3f5', '#647f94'],
+    'arun-jaitley-stadium': ['#ecf3f4', '#54838c'],
+    'ekana-stadium': ['#f0f3f1', '#71877e'],
+    'rajiv-gandhi-stadium': ['#eef1f7', '#637da5'],
+    'maharashtra-cricket-association-stadium': ['#f0f1f6', '#77849b'],
+    'sawai-mansingh-stadium': ['#f2f3f5', '#7c8b9b'],
+    'hpca-stadium': ['#eaf2f6', '#537f9a'],
+    'barsapara-cricket-stadium': ['#edf3f2', '#5b8582'],
+    'greenfield-international-stadium': ['#ebf3f1', '#57877e'],
+    'aca-vdca-stadium': ['#eef3f4', '#6a8597'],
+    'jsca-stadium': ['#eff2f5', '#748698'],
   };
-  const [a, b] = palettes[slug] || ['#2a2a2e', '#5a5a60'];
+  const [background, accent] = palettes[slug] || ['#edf2f6', '#527c9e'];
 
   return (
-    <svg viewBox="0 0 200 125" className="h-full w-full">
-      <defs>
-        <radialGradient id={`g-${slug}`} cx="50%" cy="50%" r="60%">
-          <stop offset="0%" stopColor={b} stopOpacity="0.35" />
-          <stop offset="100%" stopColor={a} stopOpacity="0.05" />
-        </radialGradient>
-      </defs>
-      <rect width="200" height="125" fill={a} />
-      <rect width="200" height="125" fill={`url(#g-${slug})`} />
-      <ellipse cx="100" cy="65" rx="72" ry="44" fill="none" stroke={b} strokeOpacity="0.5" strokeWidth="1" />
-      <ellipse cx="100" cy="65" rx="58" ry="34" fill="none" stroke={b} strokeOpacity="0.3" strokeWidth="0.5" />
-      <ellipse cx="100" cy="65" rx="42" ry="24" fill={b} fillOpacity="0.18" stroke={b} strokeOpacity="0.6" strokeWidth="0.5" />
-      <rect x="90" y="58" width="20" height="14" fill="#3a4a2a" fillOpacity="0.55" />
-      <path d="M 30 65 Q 100 10 170 65" fill="none" stroke="#d4a574" strokeOpacity="0.35" strokeWidth="1" />
-      <path d="M 30 65 Q 100 120 170 65" fill="none" stroke="#d4a574" strokeOpacity="0.35" strokeWidth="1" />
+    <svg viewBox="0 0 320 180" className="h-full w-full" role="presentation" aria-hidden="true">
+      <rect width="320" height="180" fill={background} />
+      <ellipse cx="160" cy="91" rx="122" ry="68" fill="none" stroke={accent} strokeOpacity="0.5" strokeWidth="1.5" />
+      <ellipse cx="160" cy="91" rx="99" ry="54" fill="none" stroke={accent} strokeOpacity="0.35" strokeWidth="1" />
+      <ellipse cx="160" cy="91" rx="73" ry="39" fill={accent} fillOpacity="0.07" stroke={accent} strokeOpacity="0.6" strokeWidth="1" />
+      <rect x="135" y="78" width="50" height="26" rx="2" fill="#c5d5c9" />
+      <path d="M38 91 Q160 12 282 91" fill="none" stroke={accent} strokeOpacity="0.5" strokeWidth="1.5" />
+      <path d="M38 91 Q160 170 282 91" fill="none" stroke={accent} strokeOpacity="0.5" strokeWidth="1.5" />
+      <path d="M160 52 V130 M88 91 H232" stroke={accent} strokeOpacity="0.3" strokeDasharray="3 5" />
+      <circle cx="42" cy="42" r="2" fill={accent} fillOpacity="0.65" />
+      <circle cx="278" cy="42" r="2" fill={accent} fillOpacity="0.65" />
     </svg>
   );
 }

@@ -20,6 +20,7 @@ export interface Stadium {
 }
 
 export interface SelectedSeat {
+  id: string;
   standId: string;
   standName: string;
   blockId: string;
@@ -27,6 +28,30 @@ export interface SelectedSeat {
   row: number;
   seat: number;
   isDemo: boolean;
+  /** Actual GLB instance origin in world metres (+Y up). */
+  position: [number, number, number];
+  /** Seated spectator eye position, derived from that instance. */
+  eyePosition: [number, number, number];
+  /** Playing-field focus point in the same coordinate system. */
+  target: [number, number, number];
+}
+
+export interface SeatRow {
+  number: number;
+  seats: SelectedSeat[];
+}
+
+export interface SeatPavilion {
+  id: string;
+  name: string;
+  tier: 'lower' | 'upper' | 'single';
+  rows: SeatRow[];
+}
+
+export interface SeatMap {
+  pavilions: SeatPavilion[];
+  seatCount: number;
+  numbering: 'model';
 }
 
 export type CameraPreset =

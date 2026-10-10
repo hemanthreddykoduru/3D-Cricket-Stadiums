@@ -27,31 +27,14 @@ export function IndiaMap({ stadiums, onSelect, selected }: Props) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <div className="relative aspect-[400/480] w-full max-w-2xl mx-auto">
+    <div className="relative mx-auto aspect-[400/480] w-full max-w-2xl min-w-0">
       <svg
         viewBox="0 0 400 480"
         className="h-full w-full"
-        style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.4))' }}
+        role="group"
+        aria-label="Schematic stadium locations. Select a venue marker or use the adjacent venue list."
       >
-        <defs>
-          <radialGradient id="india-fill" cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stopColor="#1a1a1c" />
-            <stop offset="100%" stopColor="#0a0a0b" />
-          </radialGradient>
-          <linearGradient id="stroke-grad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#d4a574" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#d4a574" stopOpacity="0.15" />
-          </linearGradient>
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="2" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-
-        <g stroke="rgba(255,255,255,0.03)" strokeWidth="0.5">
+        <g className="stroke-line" strokeWidth="0.5">
           {Array.from({ length: 8 }).map((_, i) => (
             <line key={`h-${i}`} x1="0" y1={i * 60} x2="400" y2={i * 60} />
           ))}
@@ -62,8 +45,7 @@ export function IndiaMap({ stadiums, onSelect, selected }: Props) {
 
         <path
           d={INDIA_PATH}
-          fill="url(#india-fill)"
-          stroke="url(#stroke-grad)"
+          className="fill-surface-800 stroke-surface-600"
           strokeWidth="1.2"
         />
 
@@ -76,40 +58,46 @@ export function IndiaMap({ stadiums, onSelect, selected }: Props) {
             return (
               <g
                 key={s.id}
+                role="button"
+                tabIndex={0}
+                aria-label={`${s.name}, ${s.city}`}
+                aria-pressed={isSelected}
                 style={{ cursor: 'pointer' }}
                 onMouseEnter={() => setHoveredId(s.id)}
                 onMouseLeave={() => setHoveredId(null)}
+                onFocus={() => setHoveredId(s.id)}
+                onBlur={() => setHoveredId(null)}
                 onClick={() => onSelect(s)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    onSelect(s);
+                  }
+                }}
               >
+                <circle cx={x} cy={y} r="16" fill="transparent" />
                 {(isSelected || isHovered) && (
-                  <circle cx={x} cy={y} r="14" fill="#d4a574" fillOpacity="0.15">
-                    <animate attributeName="r" values="8;18;8" dur="2s" repeatCount="indefinite" />
-                  </circle>
+                  <circle cx={x} cy={y} r="13" className="fill-accent stroke-accent" fillOpacity="0.1" />
                 )}
                 <circle
                   cx={x}
                   cy={y}
                   r={isSelected ? 6 : 4.5}
-                  fill="#d4a574"
-                  stroke="#050505"
+                  className="fill-accent stroke-on-accent"
                   strokeWidth="1.5"
-                  filter={isSelected ? 'url(#glow)' : undefined}
-                  style={{ transition: 'r 0.2s ease' }}
                 />
                 {(isSelected || isHovered) && (
-                  <g transform={`translate(${x + 10}, ${y - 6})`}>
+                  <g pointerEvents="none" transform={`translate(${Math.min(x + 16, 390 - (s.city.length * 7.5 + 20))}, ${y - 13})`}>
                     <rect
                       x="0" y="0"
-                      width={s.name.length * 5.5 + 14}
-                      height="16"
-                      rx="2"
-                      fill="#050505"
-                      fillOpacity="0.95"
-                      stroke="rgba(255,255,255,0.15)"
-                      strokeWidth="0.5"
+                      width={s.city.length * 7.5 + 20}
+                      height="26"
+                      rx="3"
+                      className="fill-surface-950 stroke-line-strong"
+                      strokeWidth="0.8"
                     />
-                    <text x="7" y="11" fill="#f5f5f5" fontSize="9" fontFamily="system-ui">
-                      {s.name}
+                    <text x="10" y="17" className="fill-accent" fontSize="12" fontWeight="600" fontFamily="inherit">
+                      {s.city}
                     </text>
                   </g>
                 )}

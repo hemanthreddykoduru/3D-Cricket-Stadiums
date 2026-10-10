@@ -1,20 +1,37 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Search, MapPin, ArrowRight } from 'lucide-react';
+import { Search, MapPin, ArrowRight, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { searchStadiums } from '@/data/stadiums';
+import { getFeaturedStadiums, searchStadiums } from '@/data/stadiums';
 
 export function SearchModal({ onClose }: { onClose: () => void }) {
   const [q, setQ] = useState('');
   const [idx, setIdx] = useState(0);
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const results = useMemo(() => searchStadiums(q), [q]);
+  const results = useMemo(() => q.trim() ? searchStadiums(q) : getFeaturedStadiums().slice(0, 4), [q]);
 
-  useEffect(() => { inputRef.current?.focus(); }, []);
+  useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    const dialog = dialogRef.current;
+    dialog?.showModal();
+    document.body.style.overflow = 'hidden';
+    inputRef.current?.focus();
+    return () => {
+      dialog?.close();
+      document.body.style.overflow = previousOverflow;
+      previouslyFocused?.focus({ preventScroll: true });
+    };
+  }, []);
   useEffect(() => { setIdx(0); }, [q]);
+  useEffect(() => {
+    const active = results[idx];
+    if (active) document.getElementById(`search-result-${active.id}`)?.scrollIntoView({ block: 'nearest' });
+  }, [idx, results]);
 
   const open = (slug: string) => {
     router.push(`/stadiums/${slug}`);
@@ -22,6 +39,12 @@ export function SearchModal({ onClose }: { onClose: () => void }) {
   };
 
   const onKey = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      onClose();
+      return;
+    }
+    if (!results.length) return;
     if (e.key === 'ArrowDown') {
       e.preventDefault();
       setIdx((i) => Math.min(i + 1, results.length - 1));
@@ -29,71 +52,89 @@ export function SearchModal({ onClose }: { onClose: () => void }) {
       e.preventDefault();
       setIdx((i) => Math.max(i - 1, 0));
     } else if (e.key === 'Enter' && results[idx]) {
+      e.preventDefault();
       open(results[idx].slug);
     }
   };
 
   return (
-    <div
-      className="fixed inset-0 z-[200] bg-surface-950/80 backdrop-blur-md animate-fade-in"
-      onClick={onClose}
+    <dialog
+      ref={dialogRef}
+      aria-labelledby="search-dialog-title"
+      className="search-dialog fixed inset-x-0 m-0 mx-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-1rem)] overflow-x-hidden overflow-y-auto overscroll-contain rounded-2xl border border-line bg-surface-950 p-0 text-ink-main shadow-[0_12px_40px_rgba(24,45,65,0.14)]"
+      onCancel={(event) => { event.preventDefault(); onClose(); }}
+      onClick={(event) => { if (event.target === event.currentTarget) onClose(); }}
     >
-      <div
-        className="glass mx-auto mt-[12vh] w-[min(640px,92vw)] overflow-hidden rounded-lg border border-white/10 shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center gap-3 border-b border-white/5 px-5">
-          <Search className="h-4 w-4 text-ink-muted" />
+        <div className="flex min-w-0 items-center gap-3 border-b border-line-strong bg-surface-950 px-4 focus-within:border-accent sm:px-5">
+          <Search className="h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
+          <h2 id="search-dialog-title" className="sr-only">Search stadiums</h2>
           <input
             ref={inputRef}
+            id="stadium-search"
+            role="combobox"
+            aria-expanded="true"
+            aria-autocomplete="list"
+            autoComplete="off"
             value={q}
             onChange={(e) => setQ(e.target.value)}
             onKeyDown={onKey}
-            placeholder="Search stadiums, cities or states…"
-            className="w-full bg-transparent py-4 text-[14px] text-ink-main outline-none placeholder:text-ink-dim"
+            aria-label="Search stadiums, cities or states"
+            aria-controls="stadium-search-results"
+            aria-activedescendant={results[idx] ? `search-result-${results[idx].id}` : undefined}
+            placeholder="Stadium, city, or state…"
+            className="focus-ring min-w-0 flex-1 bg-transparent py-5 text-[16px] text-ink-main placeholder:text-ink-dim"
           />
-          <kbd className="hidden rounded border border-white/10 bg-surface-800 px-1.5 py-0.5 text-[10px] text-ink-dim md:inline">
+          <kbd className="hidden rounded border border-line bg-surface-900 px-1.5 py-0.5 text-[10px] text-ink-dim md:inline">
             ESC
           </kbd>
+          <button
+            type="button"
+            onClick={onClose}
+            className="focus-ring flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-ink-muted transition-colors hover:bg-surface-900 hover:text-ink-main"
+            aria-label="Close search"
+          >
+            <X className="h-4 w-4" />
+          </button>
         </div>
 
-        <div className="max-h-[52vh] overflow-y-auto">
-          {q.trim() === '' && (
-            <div className="px-5 py-8 text-center">
-              <p className="text-[12px] uppercase tracking-[0.22em] text-ink-muted">
-                Try typing "Wankhede", "Mumbai", or "Eden"
-              </p>
-            </div>
-          )}
+        {!q.trim() && <p className="break-words px-5 pb-2 pt-4 text-[11px] uppercase tracking-[0.16em] text-ink-muted">Start with a featured ground</p>}
           {q.trim() !== '' && results.length === 0 && (
             <div className="px-5 py-10 text-center">
-              <p className="text-[13px] text-ink-muted">No stadiums match "{q}"</p>
+              <p className="break-words text-[15px] font-medium">No stadiums match &ldquo;{q}&rdquo;</p>
+              <p className="mt-2 text-[13px] text-ink-muted">Try another name, city, or state.</p>
+              <button type="button" onClick={() => { setQ(''); inputRef.current?.focus(); }} className="focus-ring mt-4 min-h-11 rounded-lg border border-line-strong bg-surface-950 px-4 text-[13px] text-accent hover:bg-surface-900">Clear search</button>
             </div>
           )}
+        <div id="stadium-search-results" role="listbox" aria-label="Stadium search results" className="max-h-[48dvh] overflow-y-auto">
           {results.map((s, i) => (
             <button
               key={s.id}
+              id={`search-result-${s.id}`}
+              role="option"
+              aria-selected={i === idx}
+              tabIndex={-1}
+              onMouseDown={(event) => event.preventDefault()}
               onClick={() => open(s.slug)}
               onMouseEnter={() => setIdx(i)}
-              className={`focus-ring flex w-full items-center justify-between gap-4 border-b border-white/5 px-5 py-3.5 text-left transition-colors ${
-                i === idx ? 'bg-surface-800/80' : 'hover:bg-surface-800/40'
+              className={`focus-ring flex min-h-11 w-full items-center justify-between gap-3 border-b border-line px-4 py-3.5 text-left transition-colors sm:px-5 ${
+                i === idx ? 'bg-surface-850' : 'hover:bg-surface-900'
               }`}
             >
-              <div className="flex items-start gap-3">
-                <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-md bg-surface-700">
+              <div className="flex min-w-0 items-start gap-3">
+                <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-line bg-surface-950">
                   <MapPin className="h-4 w-4 text-accent" />
                 </div>
-                <div>
-                  <div className="text-[13px] font-semibold text-ink-main">{s.name}</div>
-                  <div className="mt-0.5 text-[11px] text-ink-muted">
+                <div className="min-w-0">
+                  <div className="break-words text-[13px] font-semibold text-ink-main">{s.name}</div>
+                  <div className="mt-0.5 break-words text-[11px] text-ink-muted">
                     {s.city}, {s.state}
                     {s.capacity ? ` · ${s.capacity.toLocaleString('en-IN')} seats` : ''}
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="rounded-sm border border-white/10 bg-surface-700 px-2 py-0.5 text-[9px] uppercase tracking-wider text-ink-muted">
-                  {s.modelStatus === 'available' ? '3D Model' : 'Coming Soon'}
+              <div className="flex shrink-0 items-center gap-2">
+                <span className="hidden whitespace-nowrap rounded-full border border-line bg-surface-950 px-2 py-1 text-[10px] text-ink-muted sm:inline">
+                  {s.modelStatus === 'available' ? '3D ready' : 'Venue profile'}
                 </span>
                 <ArrowRight className="h-3.5 w-3.5 text-ink-dim" />
               </div>
@@ -101,16 +142,15 @@ export function SearchModal({ onClose }: { onClose: () => void }) {
           ))}
         </div>
 
-        <div className="flex items-center justify-between gap-4 border-t border-white/5 bg-surface-900/80 px-5 py-2.5">
-          <div className="flex items-center gap-3 text-[10px] text-ink-dim">
-            <span><kbd className="rounded border border-white/10 bg-surface-800 px-1">↑↓</kbd> Navigate</span>
-            <span><kbd className="rounded border border-white/10 bg-surface-800 px-1">↵</kbd> Open</span>
+        <div className="safe-area-bottom flex flex-col items-start gap-2 border-t border-line bg-surface-900 px-4 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-ink-dim">
+            <span><kbd className="rounded border border-line bg-surface-950 px-1">↑↓</kbd> Navigate</span>
+            <span><kbd className="rounded border border-line bg-surface-950 px-1">↵</kbd> Open</span>
           </div>
-          <span className="text-[10px] uppercase tracking-wider text-ink-dim">
+          <span role="status" className="text-[10px] uppercase tracking-wider text-ink-muted">
             {results.length} result{results.length === 1 ? '' : 's'}
           </span>
         </div>
-      </div>
-    </div>
+    </dialog>
   );
 }

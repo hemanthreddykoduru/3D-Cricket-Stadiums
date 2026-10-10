@@ -1,209 +1,135 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Compass, Layers, Eye, Box } from 'lucide-react';
-import { STADIUMS, getFeaturedStadiums } from '@/data/stadiums';
+import { ArrowRight, Box, Compass, MapPin, MoveUpRight, Orbit, Layers } from 'lucide-react';
+import { PUBLIC_STADIUMS, getFeaturedStadiums } from '@/data/stadiums';
 import { StadiumCard } from '@/components/stadium/StadiumCard';
 
 export default function HomePage() {
-  const featured = getFeaturedStadiums();
-  const howItWorks = [
-    { icon: Compass, title: 'Discover', desc: 'Browse 10+ iconic Indian cricket stadiums with verified metadata and public information.' },
-    { icon: Box, title: 'Explore', desc: 'Orbit, pan and zoom through fully interactive 3D stadium environments.' },
-    { icon: Layers, title: 'Select', desc: 'Drill down into stands, blocks, rows and individual seats with smooth transitions.' },
-    { icon: Eye, title: 'Experience', desc: 'Preview the view from any seat with cinematic camera interpolation.' },
+  const featured = getFeaturedStadiums().slice(0, 4);
+  const stateCount = new Set(PUBLIC_STADIUMS.map((stadium) => stadium.state)).size;
+  const availableCount = PUBLIC_STADIUMS.filter((stadium) => stadium.modelStatus === 'available').length;
+
+  return (
+    <>
+      <section className="relative overflow-hidden border-b border-line">
+        <div className="safe-area-home mx-auto grid max-w-[1600px] items-center gap-10 pb-14 pt-10 md:pb-20 md:pt-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
+          <div className="min-w-0">
+            <p className="flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.2em] text-accent">
+              <span className="h-px w-7 bg-accent" aria-hidden="true" />
+              Indian cricket. A different angle.
+            </p>
+            <h1 className="mt-5 max-w-full font-display text-[clamp(3.25rem,15vw,4rem)] font-semibold leading-[0.95] tracking-[-0.02em] sm:text-[80px] lg:text-[76px] xl:text-[96px]">
+              Beyond<br />the boundary<span className="text-accent">.</span>
+            </h1>
+            <p className="mt-6 max-w-md text-[16px] leading-relaxed text-ink-muted">
+              Discover India&apos;s cricket grounds and explore Narendra Modi Stadium in 3D, from the roofline to the pitch.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/stadiums/narendra-modi-stadium" className="focus-ring group inline-flex min-h-12 items-center gap-3 whitespace-nowrap rounded-lg bg-accent px-5 text-[14px] font-semibold text-on-accent transition-colors hover:bg-accent-hover active:bg-accent-hover">
+                <Box className="h-4 w-4" aria-hidden="true" />
+                Explore in 3D
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              </Link>
+              <Link href="/stadiums" className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 whitespace-nowrap rounded-lg px-4 text-[14px] font-semibold text-ink-main transition-colors hover:bg-surface-850 active:bg-surface-800">
+                Browse stadiums <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+
+          <FeaturedModel />
+        </div>
+
+        <div className="border-t border-line bg-surface-900">
+          <dl className="safe-area-home mx-auto grid max-w-[1600px] grid-cols-1 gap-3 py-6 sm:grid-cols-3 sm:gap-4 md:grid-cols-[1fr_1fr_1fr_auto]">
+            <Stat value={String(PUBLIC_STADIUMS.length)} label="Cricket grounds" />
+            <Stat value={String(stateCount)} label="States & territories" />
+            <Stat value={String(availableCount)} label="3D experience" />
+            <div className="hidden items-center border-l border-line pl-10 md:flex">
+              <Link href="/map" className="focus-ring flex min-h-11 items-center gap-3 text-[13px] text-ink-muted transition-colors hover:text-accent">
+                <Compass className="h-5 w-5 text-accent" aria-hidden="true" /> Find a ground on the map <MoveUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section className="safe-area-home mx-auto max-w-[1600px] py-14 md:py-20" aria-labelledby="featured-heading">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div className="min-w-0">
+            <h2 id="featured-heading" className="font-display text-[34px] font-semibold leading-tight md:text-[44px]">Iconic venues. Individual stories.</h2>
+            <p className="mt-3 text-[14px] text-ink-muted">Start with a familiar ground, or discover somewhere new.</p>
+          </div>
+          <Link href="/stadiums" className="focus-ring inline-flex min-h-11 items-center gap-2 text-[13px] font-medium text-accent hover:text-accent-hover">
+            Browse stadiums <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {featured.map((stadium) => <StadiumCard key={stadium.id} stadium={stadium} />)}
+        </div>
+      </section>
+
+      <ExploreGuide />
+    </>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
+      <dd className="font-display text-[26px] font-semibold tabular-nums text-ink-main">{value}</dd>
+      <dt className="text-[10px] uppercase tracking-[0.1em] text-ink-muted sm:text-[11px]">{label}</dt>
+    </div>
+  );
+}
+
+function FeaturedModel() {
+  return (
+    <Link href="/stadiums/narendra-modi-stadium" aria-label="Explore Narendra Modi Stadium in 3D" className="focus-ring group relative block overflow-hidden rounded-2xl border border-line bg-surface-950 shadow-[0_16px_48px_-24px_rgba(24,45,65,0.22)] transition-shadow hover:shadow-[0_20px_48px_-24px_rgba(24,45,65,0.3)]">
+      <div className="relative aspect-[1672/941]">
+        <Image src="/narendra-modi-stadium.jpg" alt="Aerial view of Narendra Modi Stadium in Ahmedabad, with orange and blue stands and a white roof" fill priority sizes="(max-width: 1023px) 100vw, 55vw" className="object-cover object-center" />
+      </div>
+      <div className="flex items-center justify-between gap-4 px-5 pb-4 pt-5 sm:px-6">
+          <div className="min-w-0">
+            <p className="mb-1.5 flex items-center gap-1.5 text-[12px] text-ink-muted"><MapPin className="h-3.5 w-3.5" aria-hidden="true" /> Ahmedabad, Gujarat</p>
+            <h2 className="break-words font-display text-[28px] font-semibold leading-[1.1] text-ink-main sm:text-[34px]">Narendra Modi Stadium</h2>
+          </div>
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-surface-850 text-accent transition-colors group-hover:bg-accent group-hover:text-on-accent"><MoveUpRight className="h-5 w-5" aria-hidden="true" /></span>
+      </div>
+      <div className="mx-5 flex flex-wrap items-center justify-between gap-2 border-t border-line py-3 text-[12px] text-ink-muted sm:mx-6">
+        <span><span className="font-semibold tabular-nums text-ink-main">1,32,000</span> capacity</span>
+        <span className="flex items-center gap-2 text-accent"><Orbit className="h-3.5 w-3.5" aria-hidden="true" /> Explore in 3D</span>
+      </div>
+    </Link>
+  );
+}
+
+function ExploreGuide() {
+  const tools = [
+    { icon: Orbit, title: 'Find your angle', description: 'Rotate the model, zoom into the architecture, or switch to a top-down or pitch view.' },
+    { icon: Layers, title: 'See the bigger picture', description: 'Use layers to show or hide the surrounding site, access routes and parking.' },
+    { icon: MapPin, title: 'Know the ground', description: 'Read venue profiles with locations, capacities and a little of the history behind each ground.' },
   ];
 
   return (
-    <>
-      <section className="relative overflow-hidden border-b border-white/5">
-        <HeroBackdrop />
-        <div className="relative mx-auto max-w-[1600px] px-6 pb-28 pt-24 md:px-10 md:pb-36 md:pt-32 lg:pt-40">
-          <div className="max-w-3xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-surface-800/60 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-ink-muted">
-              <span className="h-1 w-1 rounded-full bg-accent" />
-              Interactive 3D Venue Explorer
-            </div>
-            <h1 className="font-display text-[42px] font-bold leading-[1.05] tracking-tight text-ink-main md:text-[64px] lg:text-[76px]">
-              Explore India's Cricket Stadiums
-              <span className="text-accent"> in 3D</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-ink-muted md:text-[18px]">
-              Discover stadiums, explore stands and experience the view from your seat — in a cinematic, interactive environment built for fans.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Link
-                href="/stadiums"
-                className="focus-ring group inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 text-[13px] font-semibold text-surface-950 transition-colors hover:bg-accent-hover"
-              >
-                Explore Stadiums
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </Link>
-              <Link
-                href="/map"
-                className="focus-ring inline-flex items-center gap-2 rounded-md border border-white/15 bg-surface-800/50 px-5 py-3 text-[13px] font-semibold text-ink-main transition-colors hover:border-white/30 hover:bg-surface-800"
-              >
-                <Compass className="h-4 w-4" />
-                View Map
-              </Link>
-            </div>
-          </div>
-
-          <div className="mt-20 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-white/5 pt-10 md:grid-cols-4">
-            <Stat label="Stadiums" value={String(STADIUMS.length)} />
-            <Stat label="Indian States" value="9" />
-            <Stat label="Demo seats" value="~12,000" />
-            <Stat label="3D ready" value="Yes" />
-          </div>
+    <section className="border-t border-line bg-surface-900">
+      <div className="safe-area-home mx-auto grid max-w-[1600px] gap-10 py-14 md:py-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <div className="min-w-0">
+          <h2 className="font-display text-[36px] font-semibold leading-tight md:text-[44px]">The ground is yours<br />to explore.</h2>
+          <p className="mt-4 max-w-sm text-[14px] leading-relaxed text-ink-muted">Start with our Narendra Modi Stadium reconstruction. More venue profiles are available in the directory.</p>
+          <Link href="/about" className="focus-ring mt-5 inline-flex min-h-11 items-center gap-2 text-[13px] text-accent hover:text-accent-hover">About the project <ArrowRight className="h-4 w-4" aria-hidden="true" /></Link>
         </div>
-      </section>
-
-      <section className="border-b border-white/5 bg-surface-950">
-        <div className="mx-auto max-w-[1600px] px-6 py-20 md:px-10 md:py-28">
-          <div className="flex items-end justify-between gap-6">
-            <div>
-              <div className="text-[11px] uppercase tracking-[0.22em] text-ink-muted">Featured</div>
-              <h2 className="mt-2 font-display text-[28px] font-semibold tracking-tight text-ink-main md:text-[36px]">
-                Iconic stadiums
-              </h2>
-            </div>
-            <Link href="/stadiums" className="focus-ring hidden items-center gap-1.5 text-[12px] font-medium text-accent hover:text-accent-hover md:inline-flex">
-              View all <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
-
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {featured.map((s, i) => (
-              <StadiumCard key={s.id} stadium={s} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-white/5 bg-gradient-to-b from-surface-950 to-surface-900/30">
-        <div className="mx-auto max-w-[1600px] px-6 py-20 md:px-10 md:py-28">
-          <div className="max-w-2xl">
-            <div className="text-[11px] uppercase tracking-[0.22em] text-ink-muted">How it works</div>
-            <h2 className="mt-2 font-display text-[28px] font-semibold tracking-tight text-ink-main md:text-[36px]">
-              From discovery to seat view — in four steps
-            </h2>
-            <p className="mt-4 max-w-xl text-[14px] leading-relaxed text-ink-muted">
-              Stadium3D India is a premium sports-tech experience built on a clean, extensible architecture ready for real licensed stadium models and official integrations.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {howItWorks.map((step, i) => (
-              <div key={step.title} className="glass rounded-md border border-white/5 p-6 transition-all hover:border-white/15">
-                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-surface-700 text-accent">
-                  <step.icon className="h-4 w-4" />
-                </div>
-                <div className="mt-4 text-[10px] uppercase tracking-[0.22em] text-ink-dim">
-                  Step {String(i + 1).padStart(2, '0')}
-                </div>
-                <h3 className="mt-1 font-display text-[16px] font-semibold text-ink-main">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-[13px] leading-relaxed text-ink-muted">{step.desc}</p>
+        <div className="divide-y divide-line">
+          {tools.map(({ icon: Icon, title, description }) => (
+            <div key={title} className="flex gap-5 py-6 first:pt-0 last:pb-0">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center text-accent"><Icon className="h-6 w-6" aria-hidden="true" /></span>
+              <div className="min-w-0">
+                <h3 className="font-display text-[24px] font-semibold">{title}</h3>
+                <p className="mt-1.5 max-w-lg text-[14px] leading-relaxed text-ink-muted">{description}</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden border-b border-white/5">
-        <div className="mx-auto grid max-w-[1600px] gap-10 px-6 py-24 md:grid-cols-[1.5fr_1fr] md:px-10 md:py-32">
-          <div>
-            <h2 className="font-display text-[28px] font-semibold tracking-tight text-ink-main md:text-[44px]">
-              Experience cricket like you're in the stadium
-            </h2>
-            <p className="mt-5 max-w-lg text-[14px] leading-relaxed text-ink-muted">
-              Every stand, every block, every seat — all rendered in an immersive cinematic environment with smooth camera transitions.
-            </p>
-            <Link
-              href="/stadiums"
-              className="focus-ring group mt-8 inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 text-[13px] font-semibold text-surface-950 transition-colors hover:bg-accent-hover"
-            >
-              Begin exploring <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <div className="glass hidden rounded-md border border-white/5 p-8 md:block">
-            <div className="text-[11px] uppercase tracking-[0.22em] text-ink-muted">Currently in v1.0</div>
-            <ul className="mt-5 space-y-3 text-[13px] text-ink-main">
-              <li className="flex items-center gap-2"><Check /> Interactive demo stadium</li>
-              <li className="flex items-center gap-2"><Check /> Stand & seat selection</li>
-              <li className="flex items-center gap-2"><Check /> Cinematic seat-view camera</li>
-              <li className="flex items-center gap-2"><Check /> 10 real stadiums with verified data</li>
-              <li className="flex items-center gap-2"><Check /> Ready for licensed GLB models</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </>
-  );
-}
-
-function Stat({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <div className="font-display text-[30px] font-bold text-ink-main md:text-[42px]">{value}</div>
-      <div className="mt-1 text-[11px] uppercase tracking-[0.22em] text-ink-muted">{label}</div>
-    </div>
-  );
-}
-
-function HeroBackdrop() {
-  return (
-    <>
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-surface-950 via-surface-950 to-surface-950/95" />
-        <svg className="absolute right-0 top-0 h-full w-[60%] opacity-[0.15]" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <radialGradient id="hg" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#d4a574" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#d4a574" stopOpacity="0" />
-            </radialGradient>
-          </defs>
-          <ellipse cx="300" cy="300" rx="260" ry="200" fill="none" stroke="#d4a574" strokeWidth="1" opacity="0.3" />
-          <ellipse cx="300" cy="300" rx="220" ry="170" fill="none" stroke="#d4a574" strokeWidth="1" opacity="0.2" />
-          <ellipse cx="300" cy="300" rx="180" ry="140" fill="none" stroke="#d4a574" strokeWidth="1" opacity="0.15" />
-          <ellipse cx="300" cy="300" rx="120" ry="90" fill="url(#hg)" />
-        </svg>
-      </div>
-    </>
-  );
-}
-
-function Check() {
-  return (
-    <div className="flex h-4 w-4 items-center justify-center rounded-full bg-accent/20 text-accent">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="h-2.5 w-2.5">
-        <polyline points="20 6 9 17 4 12" />
-      </svg>
-    </div>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="border-t border-white/5 bg-surface-950">
-      <div className="mx-auto max-w-[1600px] px-6 py-10 md:px-10">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-          <div>
-            <div className="font-display text-[13px] font-bold tracking-[0.18em] text-ink-main">
-              STADIUM3D INDIA
             </div>
-            <p className="mt-2 max-w-md text-[12px] text-ink-muted">
-              A public 3D exploration experience for India's cricket stadiums. Not affiliated with any cricket board or team.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-6 text-[12px] text-ink-muted">
-            <Link href="/stadiums" className="hover:text-ink-main">Stadiums</Link>
-            <Link href="/map" className="hover:text-ink-main">Map</Link>
-            <Link href="/about" className="hover:text-ink-main">About</Link>
-          </div>
+          ))}
         </div>
       </div>
-    </footer>
+    </section>
   );
 }

@@ -1,0 +1,165 @@
+.screen {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 20px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: #edf2f6;
+  color: #182d41;
+  font-family: var(--font-body), 'Avenir Next', system-ui, sans-serif;
+  container: stadium-loader / size;
+}
+
+.content {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: min(100%, 36rem);
+  min-width: 0;
+  margin: auto;
+  text-align: center;
+}
+
+.illustration {
+  display: block;
+  flex: none;
+  width: min(100%, 36rem, 90cqh);
+}
+
+.copy {
+  max-width: 100%;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(30px, 6cqw, 42px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.015em;
+  overflow-wrap: anywhere;
+}
+
+.status {
+  margin: 10px 0 0;
+  color: #455d70;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.detail {
+  margin: 6px 0 0;
+  color: #4f6578;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(100%, 24rem);
+  min-height: 18px;
+}
+
+.track {
+  flex: 1;
+  height: 4px;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #d5e0e9;
+}
+
+.fill,
+.indeterminate {
+  display: block;
+  position: relative;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.fill {
+  overflow: hidden;
+  background: #245f9e;
+}
+
+.indeterminate {
+  width: 100%;
+}
+
+.fill::after,
+.indeterminate::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: 38%;
+  border-radius: inherit;
+  background: #98c5ed;
+  animation: progress-sweep 2.6s ease-in-out infinite;
+}
+
+.indeterminate::after {
+  background: #245f9e;
+}
+
+.percentage {
+  min-width: 4ch;
+  color: #245f9e;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  text-align: right;
+}
+
+@keyframes progress-sweep {
+  from { transform: translateX(-115%); }
+  to { transform: translateX(280%); }
+}
+
+@container stadium-loader (max-height: 560px) {
+  .content { gap: 12px; }
+  .illustration { width: min(100%, 26rem, 64cqh); }
+  .title { font-size: 34px; }
+  .detail { display: none; }
+}
+
+@container stadium-loader (max-width: 380px) {
+  .content { gap: 12px; }
+  .title { font-size: 30px; }
+  .status { font-size: 12px; }
+  .detail { display: none; }
+}
+
+@container stadium-loader (max-height: 420px) {
+  .content { gap: 8px; }
+  .illustration { width: min(100%, 15rem, 48cqh); }
+  .title { font-size: 28px; }
+  .status { margin-top: 6px; font-size: 12px; }
+  .detail { display: none; }
+}
+
+@container stadium-loader (max-height: 300px) {
+  .illustration { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen,
+  .screen *,
+  .screen *::before,
+  .screen *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .fill::after { display: none; }
+
+  .indeterminate::after { transform: translateX(82%); }
+}

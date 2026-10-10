@@ -30,7 +30,7 @@ export const STADIUMS: Stadium[] = [
     association: 'Gujarat Cricket Association',
     description: 'The largest cricket stadium in the world, home to the Gujarat Cricket Association. Rebuilt on the site of the former Motera Stadium with a fully roofed seating bowl.',
     modelStatus: 'available',
-    stadiumModel: '/models/narendra-modi-stadium/stadium.glb',
+    stadiumModel: '/models/narendra-modi-stadium/step34-c-motera.glb',
     environmentModel: '',
     coordinates: { lat: 23.0678, lng: 72.5685 },
     featured: true,
@@ -265,19 +265,30 @@ export const STADIUMS: Stadium[] = [
   }
 ];
 
+// Keep the development fixture reachable by URL, but out of public discovery.
+export const PUBLIC_STADIUMS = STADIUMS.filter((stadium) => stadium.id !== 'test-stadium');
+
 export const getStadiumBySlug = (slug: string): Stadium | undefined =>
   STADIUMS.find((s) => s.slug === slug);
 
 export const getFeaturedStadiums = (): Stadium[] =>
-  STADIUMS.filter((s) => s.featured);
+  PUBLIC_STADIUMS.filter((s) => s.featured);
 
-export const searchStadiums = (query: string): Stadium[] => {
+export type AvailabilityFilter = 'all' | 'available' | 'coming-soon';
+
+export const filterStadiums = (
+  query: string,
+  state = 'all',
+  availability: AvailabilityFilter = 'all',
+): Stadium[] => {
   const q = query.trim().toLowerCase();
-  if (!q) return [];
-  return STADIUMS.filter(
+  return PUBLIC_STADIUMS.filter(
     (s) =>
-      s.name.toLowerCase().includes(q) ||
-      s.city.toLowerCase().includes(q) ||
-      s.state.toLowerCase().includes(q),
+      (!q || [s.name, s.city, s.state].some((value) => value.toLowerCase().includes(q))) &&
+      (state === 'all' || s.state === state) &&
+      (availability === 'all' || (availability === 'available' ? s.modelStatus === 'available' : s.modelStatus !== 'available')),
   );
 };
+
+export const searchStadiums = (query: string): Stadium[] =>
+  query.trim() ? filterStadiums(query) : [];

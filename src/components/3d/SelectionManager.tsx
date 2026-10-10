@@ -1,5 +1,7 @@
 import { useLayoutEffect } from 'react';
+import { useThree } from '@react-three/fiber';
 import * as THREE from 'three';
+import { getStadiumLayer, isModelObjectExcluded, isStadiumLayerVisible } from '@/lib/model';
 import type { LayerKey } from '@/types/stadium';
 
 interface Props {
@@ -7,35 +9,34 @@ interface Props {
   layers: Record<LayerKey, boolean>;
 }
 
-function belongsToEnvironment(name: string) {
-  return name.startsWith('Web_Environment_') || name.startsWith('Step21_Environment_');
-}
-
-function belongsToRoads(name: string) {
-  return name.includes('AccessRoad') || name.includes('PedestrianPlaza') || name.includes('Driveway') || name.includes('Access_Ribbon') || name.includes('Forecourt');
-}
-
-function belongsToParking(name: string) {
-  return name.startsWith('Step21_Environment_Parking_');
-}
-
-function belongsToSeats(name: string) {
-  return name.includes('Seating_Detail');
-}
-
 export function SelectionManager({ root, layers }: Props) {
+  const { gl, invalidate } = useThree();
+
+  useLayoutEffect(() => {
+    const shadowMap = gl.shadowMap;
+    const previousAutoUpdate = shadowMap.autoUpdate;
+    shadowMap.autoUpdate = false;
+    invalidate();
+
+    return () => {
+      // Restore renderer state only while this effect still owns the static
+      // setting; another scene/controller may have taken over meanwhile.
+      if (shadowMap.autoUpdate === false) shadowMap.autoUpdate = previousAutoUpdate;
+    };
+  }, [gl, invalidate]);
+
   useLayoutEffect(() => {
     root.traverse((object) => {
-      if (object === root) return;
-      const name = object.name;
-      let visible = layers.stadium;
-      if (belongsToEnvironment(name)) visible = visible && layers.environment;
-      if (belongsToRoads(name)) visible = visible && layers.roads;
-      if (belongsToParking(name)) visible = visible && layers.parking;
-      if (belongsToSeats(name)) visible = visible && layers.seats;
-      object.visible = visible;
+      // Classify renderable meshes, keeping groups open for child metadata overrides.
+      object.visible = !isModelObjectExcluded(object) && (object instanceof THREE.Mesh
+        ? isStadiumLayerVisible(getStadiumLayer(object), layers)
+        : layers.stadium);
     });
-  }, [root, layers]);
+    // Visibility changes alter shadow casters. With automatic updates off,
+    // explicitly rebuild the cached map and wake the demand-rendered canvas.
+    gl.shadowMap.needsUpdate = true;
+    invalidate();
+  }, [root, layers, gl, invalidate]);
 
   return null;
 }

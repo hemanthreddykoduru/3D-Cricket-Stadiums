@@ -1,0 +1,123 @@
+.art {
+  --seat-light-peak: 0.88;
+  display: block;
+  flex: none;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 12 / 7;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.art[data-phase='preparing'] {
+  --seat-light-peak: 1;
+}
+
+.stadium {
+  animation: stadium-float 5.6s ease-in-out 1.2s infinite;
+}
+
+/* Structural layers are complete at rest, including without animation support. */
+.foundation,
+.tiers,
+.roof {
+  opacity: 1;
+  transform: none;
+  transform-box: view-box;
+  transform-origin: 240px 170px;
+}
+
+.foundation {
+  animation: assemble-foundation 560ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+.tiers {
+  animation: assemble-tiers 640ms cubic-bezier(0.2, 0.75, 0.25, 1) 160ms both;
+}
+
+.roof {
+  animation: assemble-roof 720ms cubic-bezier(0.2, 0.75, 0.25, 1) 440ms both;
+}
+
+.shadow {
+  opacity: 0.65;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: shadow-breathe 5.6s ease-in-out 1.2s infinite;
+}
+
+.seatLight {
+  opacity: 0.08;
+  animation: seat-light-wave 4.8s ease-in-out infinite backwards;
+}
+
+.roofTrace,
+.roofBeacon {
+  animation: trace-roof 7.2s linear 1.2s infinite;
+}
+
+.roofBeacon {
+  stroke-dashoffset: -17;
+  animation-name: trace-roof-beacon;
+}
+
+.fieldSweep {
+  opacity: 0.3;
+  animation: field-sweep 5.2s ease-in-out 1.35s infinite backwards;
+}
+
+@keyframes assemble-foundation {
+  from { opacity: 0.15; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes assemble-tiers {
+  from { opacity: 0.08; transform: translateY(14px) scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes assemble-roof {
+  from { opacity: 0.12; transform: translateY(-20px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes stadium-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes shadow-breathe {
+  0%, 100% { opacity: 0.65; transform: scaleX(1); }
+  50% { opacity: 0.42; transform: scaleX(0.96); }
+}
+
+@keyframes seat-light-wave {
+  0%, 32%, 100% { opacity: 0.08; }
+  12% { opacity: var(--seat-light-peak); }
+}
+
+@keyframes trace-roof {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -100; }
+}
+
+@keyframes trace-roof-beacon {
+  from { stroke-dashoffset: -17; }
+  to { stroke-dashoffset: -117; }
+}
+
+@keyframes field-sweep {
+  0%, 12% { opacity: 0; transform: translateX(-100px); }
+  26% { opacity: 0.34; }
+  64% { opacity: 0.34; }
+  78%, 100% { opacity: 0; transform: translateX(225px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art,
+  .art * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
