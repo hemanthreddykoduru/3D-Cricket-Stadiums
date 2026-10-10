@@ -28,3 +28,6 @@ sources/
 !public/models/**/stadium.glb
 !public/models/narendra-modi-stadium/step34-c-motera.glb
 
+
+public/models/test-stadium/stadium.glb
+

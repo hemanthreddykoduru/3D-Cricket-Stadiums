@@ -14,7 +14,7 @@ export const STADIUM_ASSETS: Record<string, StadiumAsset> = {
   },
   'narendra-modi-stadium': {
     slug: 'narendra-modi-stadium',
-    stadiumModel: '/models/narendra-modi-stadium/step34-c-motera.glb',
+    stadiumModel: '/models/narendra-modi-stadium/step34-c-motera.glb?v=2',
     environmentModel: '',
     status: 'available'
   },
